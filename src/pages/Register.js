@@ -28,7 +28,8 @@ const Register = () => {
         .min(7, 'Password must be atleast 7 character long.')
         .max(16, "Password shouldn't be more than 16 character long.")
         .required("Password is required."),
-      image: Yup.string().required('Please upload an avatar.')
+      confirm_password: Yup.string().oneOf([Yup.ref('password'), null], 'Password must match.').required('Comfirm password is required.'),
+      image: Yup.mixed().required('Please upload an avatar.')
         .test("fileFormat", "Unsupported Format", value => !value || (value => value && ['.png', '.jpg'].includes(value.type))
         )
     }),
@@ -94,6 +95,20 @@ const Register = () => {
       />
       {formik.touched.password && formik.errors.password ? (
         <p className='error'>{formik.errors.password}</p>
+      ) : null}
+
+      <label htmlFor="confirm_password">Comfirm Password: </label>
+      <input
+        id="confirm_password"
+        name="confirm_password"
+        type="password"
+        placeholder='Confirm password.'
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.confirm_password}
+      />
+      {formik.touched.confirm_password && formik.errors.confirm_password ? (
+        <p className='error'>{formik.errors.confirm_password}</p>
       ) : null}
 
       <label htmlFor="image">Upload a picture: </label>
