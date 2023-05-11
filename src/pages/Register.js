@@ -11,6 +11,7 @@ const Register = () => {
       lastName: '',
       email: '',
       password: '',
+      comfirm_password: '',
       image: avatar,
     },
 
