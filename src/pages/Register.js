@@ -11,7 +11,7 @@ const Register = () => {
       lastName: '',
       email: '',
       password: '',
-      comfirm_password: '',
+      confirm_password: '',
       image: avatar,
     },
 
@@ -98,7 +98,7 @@ const Register = () => {
         <p className='error'>{formik.errors.password}</p>
       ) : null}
 
-      <label htmlFor="confirm_password">Comfirm Password: </label>
+      <label htmlFor="confirm_password">Confirm Password: </label>
       <input
         id="confirm_password"
         name="confirm_password"
